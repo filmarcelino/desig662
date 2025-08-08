@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Par ou Impar - Faber Games Arcade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">Par ou Impar</h1>
+        <form method="post">
+            <button class="arcade-link arcade-btn" type="submit" name="choice" value="Par">Par</button>
+            <button class="arcade-link arcade-btn" type="submit" name="choice" value="Impar">Impar</button>
+        </form>
+        <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+    </div>
+</body>
+</html> 

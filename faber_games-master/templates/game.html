@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ game.name }} - Faber Games Arcade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">{{ game.name }}</h1>
+
+        {% block content %}
+        <p>Conteúdo do jogo será exibido aqui.</p>
+        {% endblock %}
+
+        <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+        <a class="arcade-link" href="/">&larr; Voltar para Home</a>
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

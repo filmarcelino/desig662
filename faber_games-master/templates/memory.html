@@ -1,0 +1,33 @@
+{% extends "game.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/memory.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="scoreboard">
+    <div>Acertos: <span id="matches">0</span></div>
+    <div>Tentativas: <span id="attempts">0</span></div>
+    <div>Tempo: <span id="timer">60</span>s</div>
+</div>
+
+<div id="controls">
+    <button id="restart-btn">Reiniciar</button>
+</div>
+
+<div id="memory-board">
+    {% for card in deck %}
+    <div class="card" data-card="{{ card }}">
+        <img src="{{ url_for('static', filename='images/memory/' + card_back) }}"
+             data-front="{{ url_for('static', filename='images/memory/' + card) }}"
+             data-back="{{ url_for('static', filename='images/memory/' + card_back) }}">
+    </div>
+    {% endfor %}
+</div>
+
+<div id="history"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='games/memory.js') }}"></script>
+{% endblock %}

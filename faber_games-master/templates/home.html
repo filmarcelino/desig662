@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Faber Games Arcade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}" />
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">Faber Games Arcade</h1>
+        <ul class="arcade-list">
+            <li><a class="arcade-link" href="/games">Games</a></li>
+            <li><a class="arcade-link" href="{{ url_for('select_ranking') }}">Ranking de Pontuação</a></li>
+        </ul>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

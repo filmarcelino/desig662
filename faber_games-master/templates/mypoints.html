@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Pontos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body>
+    <h1> Meus Pontos em {{ game_slug.replace("-", " ").title() }}</h1>
+    <div class="score-box">
+        Jogador: <strong>{{ player }}</strong><br>
+        Maior pontuação: <strong>{{ highscore }}</strong>
+    </div>
+    <a href="{{ url_for('home') }}">Voltar para o Início</a>
+</body>
+</html>

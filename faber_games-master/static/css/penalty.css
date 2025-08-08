@@ -1,0 +1,306 @@
+/* Game Container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Field Container */
+.field-container {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    background: linear-gradient(135deg, #228B22, #32CD32);
+    border: 4px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Goal Area */
+.goal-area {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+    height: 150px;
+    border: 4px solid #fff;
+    border-bottom: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px 5px 0 0;
+}
+
+.goal-posts {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+    height: 150px;
+}
+
+.goal-post {
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.goal-post.left {
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 150px;
+}
+
+.goal-post.right {
+    right: 0;
+    top: 0;
+    width: 6px;
+    height: 150px;
+}
+
+.goal-post.top {
+    left: 0;
+    top: 0;
+    width: 375px;
+    height: 6px;
+}
+
+/* Soccer net pattern */
+.goal-net {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 375px;
+    height: 150px;
+    background-image: 
+        linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+}
+
+/* Goal posts should be above the net */
+.goal-post.left,
+.goal-post.right,
+.goal-post.top {
+    z-index: 2;
+}
+
+/* Player and Goalkeeper */
+.player {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.goalkeeper {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    transition: all 0.8s ease-in-out;
+}
+
+.ball {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    transition: all 0.8s ease-in-out;
+}
+
+/* SVG Styles */
+.player-svg {
+    width: 60px;
+    height: 80px;
+}
+
+.goalkeeper-svg {
+    width: 70px;
+    height: 90px;
+}
+
+.goalkeeper-image {
+    position: relative;
+    z-index: 6;
+}
+
+.goalkeeper-image img {
+    width: 70px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.goalkeeper-legs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 90px;
+    z-index: 5;
+}
+
+.ball-svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Buttons */
+.direction-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.direction-btn {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border: 2px solid #00fff7;
+    border-radius: 8px;
+    background: #222;
+    color: #39ff14;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    text-shadow: 0 0 4px #00fff7, 0 0 2px #fff;
+    box-shadow: 0 0 8px #00fff7, 0 0 2px #ff0080;
+    transition: all 0.2s;
+}
+
+.direction-btn:hover {
+    background: #ff0080;
+    color: #fff;
+    box-shadow: 0 0 16px #ff0080, 0 0 4px #00fff7;
+    transform: translateY(-2px);
+}
+
+/* Display Elements */
+.score-display {
+    font-size: 1.2rem;
+    color: #39ff14;
+    text-shadow: 0 0 8px #00fff7, 0 0 2px #fff;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.result-display {
+    font-size: 2rem;
+    color: #39ff14;
+    text-shadow: 0 0 12px #00fff7, 0 0 4px #fff;
+    margin: 20px 0;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-goal {
+    color: #ffd93d;
+    text-shadow: 0 0 12px #ffd93d, 0 0 4px #fff;
+}
+
+.result-saved {
+    color: #ff6b6b;
+    text-shadow: 0 0 12px #ff6b6b, 0 0 4px #fff;
+}
+
+.details-display {
+    background: rgba(0, 0, 0, 0.8);
+    color: #39ff14;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.play-again-btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: 2px solid #00fff7;
+    border-radius: 8px;
+    background: #222;
+    color: #39ff14;
+    cursor: pointer;
+    font-family: 'Press Start 2P', monospace;
+    text-shadow: 0 0 4px #00fff7, 0 0 2px #fff;
+    box-shadow: 0 0 8px #00fff7, 0 0 2px #ff0080;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.play-again-btn:hover {
+    background: #ff0080;
+    color: #fff;
+    box-shadow: 0 0 16px #ff0080, 0 0 4px #00fff7;
+    transform: translateY(-2px);
+}
+
+.game-instructions {
+    background: rgba(0, 0, 0, 0.8);
+    color: #39ff14;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    max-width: 600px;
+    text-align: center;
+}
+
+.instructions-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+/* Animation classes */
+.ball-kick-left {
+    transform: translateX(-120px) translateY(-150px);
+}
+
+.ball-kick-center {
+    transform: translateX(-50%) translateY(-180px);
+}
+
+.ball-kick-right {
+    transform: translateX(120px) translateY(-150px);
+}
+
+.goalkeeper-dive-left {
+    transform: translate(-50%, -50%) translateX(-120px) rotate(-25deg);
+}
+
+.goalkeeper-dive-right {
+    transform: translate(-50%, -50%) translateX(120px) rotate(25deg);
+}
+
+.goalkeeper-dive-center {
+    transform: translate(-50%, -50%) translateY(-20px);
+} 

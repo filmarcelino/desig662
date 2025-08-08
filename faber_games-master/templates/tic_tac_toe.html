@@ -1,0 +1,27 @@
+{% extends "base_fullscreen.html" %}
+
+{% block title %}Jogo da Velha{% endblock %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tic_tac_toe.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="arcade-container">
+    <h2 class="arcade-title">Jogo da Velha</h2>
+    <div class="board" id="board">
+        {% for i in range(9) %}
+        <div class="cell" data-index="{{ i }}"></div>
+        {% endfor %}
+    </div>
+    <div class="message" id="message" style="display:none;">
+        <p id="messageText"></p>
+        <a class="arcade-link" href="javascript:void(0);" onclick="startGame()">🔄 Reiniciar</a>
+    </div>
+    <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/tic_tac_toe.js') }}"></script>
+{% endblock %}

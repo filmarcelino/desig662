@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Scores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body>
+    <h1>My Scores in {{ game_slug.replace("-", " ").title() }}</h1>
+
+    <div class="score-box">
+        Player: <strong>{{ player }}</strong><br>
+        Highest Score: <strong>{{ highscore }}</strong>
+    </div>
+
+    <!-- Link to the full game ranking -->
+    <a href="{{ url_for('highscores', game_slug=game_slug) }}">View Full Ranking</a>
+
+    <!-- Link to go back home -->
+    <a href="{{ url_for('home') }}">Voltar para Home</a>
+</body>
+</html>

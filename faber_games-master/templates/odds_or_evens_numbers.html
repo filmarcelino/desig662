@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Escolha um número - Par ou Ímpar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">Escolha um número</h1>
+        
+        <p class="arcade-link">Vitórias consecutivas: <strong>{{ streak }}</strong></p>
+
+        <p class="arcade-link">Você escolheu: <strong>{{ user_choice }}</strong> &nbsp; | &nbsp; Computador: <strong>{{ computer_choice }}</strong></p>
+
+        {% if show_round_result %}
+            <div class="arcade-link" style="margin: 20px 0; padding: 15px; border: 2px solid #eee; border-radius: 10px; background: #222; color: #fff;">
+                <h2>{{ result }}</h2>
+                <p>Número escolhido por você: <strong>{{ user_number }}</strong></p>
+                <p>Número escolhido pelo computador: <strong>{{ computer_number }}</strong></p>
+                <p>Soma dos números: <strong>{{ total }}</strong></p>
+            </div>
+        {% endif %}
+
+        {% if not show_continue_options %}
+            <form method="post">
+                <div style="margin: 32px 0;">
+                    {% for n in range(1, 11) %}
+                    <button class="arcade-link arcade-btn" type="submit" name="number" value="{{ n }}">{{ n }}</button>
+                    {% endfor %}
+                </div>
+            </form>
+        {% endif %}
+
+        {% if show_continue_options %}
+            <form method="POST" action="{{ url_for('game_page', game_slug='odds-or-evens') }}">
+                <button class="arcade-link arcade-btn" type="submit" name="action" value="continue">Jogar Novamente</button>
+            </form>
+
+            <form method="GET" action="{{ url_for('home') }}">
+                <button class="arcade-link arcade-btn" type="submit">Voltar para a Home</button>
+            </form>
+        {% endif %}
+
+        <a class="arcade-link" href="/games/odds-or-evens">&larr; Reiniciar</a>
+    </div>
+</body>
+</html>
