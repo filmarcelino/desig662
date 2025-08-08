@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Faber Games Arcade</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}" />
-</head>
-<body class="arcade-bg">
-    <div class="arcade-container">
-        <h1 class="arcade-title">Faber Games Arcade</h1>
-        <ul class="arcade-list">
-            <li><a class="arcade-link" href="/games">Games</a></li>
-            <li><a class="arcade-link" href="{{ url_for('select_ranking') }}">Ranking de Pontuação</a></li>
-        </ul>
+{% extends "base.html" %}
 
-        {% block content %}
-        {% endblock %}
+{% block title %}Faber Games Arcade - Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1 class="page-title">Welcome to the Retro Game Hub</h1>
+    <p class="page-subtitle">Your one-stop place for classic and new arcade games.</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('games_list') }}" class="btn btn-primary">Browse Games</a>
+        <a href="{{ url_for('select_ranking') }}" class="btn btn-secondary">View High Scores</a>
     </div>
-
-    {% block scripts %}{% endblock %}
-</body>
-</html>
+</div>
+{% endblock %}

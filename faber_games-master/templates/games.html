@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Games - Faber Games Arcade</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
-</head>
-<body class="arcade-bg">
-    <div class="arcade-container">
-        <h1 class="arcade-title">Games</h1>
-        <ul class="arcade-list">
-            {% for game in games %}
-            <li><a class="arcade-link" href="/games/{{ game.slug }}">{{ game.name }}</a></li>
-            {% endfor %}
-        </ul>
-        <a class="arcade-link" href="/">&larr; Voltar para Home</a>
-    </div>
-</body>
-</html> 
+{% extends "base.html" %}
+{% from "_macros.html" import game_card %}
+
+{% block title %}Games - Faber Games Arcade{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Games</h1>
+<p class="page-subtitle">Select a game to start playing.</p>
+
+<div class="games-grid">
+    {% for game in games %}
+    {{ game_card(game) }}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Faber Games{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <button class="mobile-nav-toggle" aria-controls="sidebar-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+            <div class="logo">
+                <a href="{{ url_for('home') }}">FG</a>
+            </div>
+            <!-- User profile/actions can go here -->
+        </header>
+        <nav class="app-sidebar">
+            <ul class="sidebar-nav">
+                <li><a href="{{ url_for('games_list') }}">Games</a></li>
+                <li><a href="{{ url_for('select_ranking') }}">Rankings</a></li>
+                <li><a href="{{ url_for('mypoints') }}">My Points</a></li>
+            </ul>
+        </nav>
+        <main class="app-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

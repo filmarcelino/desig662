@@ -1,14 +1,14 @@
-{% extends "base_fullscreen.html" %}
+{% extends "base.html" %}
 
-{% block title %}Jogo da Velha{% endblock %}
+{% block title %}Jogo da Velha - Faber Games{% endblock %}
 
-{% block extra_styles %}
+{% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/tic_tac_toe.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="arcade-container">
-    <h2 class="arcade-title">Jogo da Velha</h2>
+<h1 class="page-title">Jogo da Velha</h1>
+<div class="game-container">
     <div class="board" id="board">
         {% for i in range(9) %}
         <div class="cell" data-index="{{ i }}"></div>
@@ -16,9 +16,8 @@
     </div>
     <div class="message" id="message" style="display:none;">
         <p id="messageText"></p>
-        <a class="arcade-link" href="javascript:void(0);" onclick="startGame()">🔄 Reiniciar</a>
+        <button class="btn btn-primary" onclick="startGame()">🔄 Reiniciar</button>
     </div>
-    <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
 </div>
 {% endblock %}
 
