@@ -1,0 +1,10 @@
+{% macro game_card(game) %}
+<a href="/games/{{ game.slug }}" class="game-card">
+    <div class="game-card-image">
+        <img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="{{ game.name }}">
+    </div>
+    <div class="game-card-content">
+        <h3 class="game-card-title">{{ game.name }}</h3>
+    </div>
+</a>
+{% endmacro %}

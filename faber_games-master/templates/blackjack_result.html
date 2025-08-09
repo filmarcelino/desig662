@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Blackjack - Resultado - Faber Games Arcade{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blackjack.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="arcade-container">
+    <h1 class="arcade-title">Blackjack</h1>
+
+    <div class="result-message">
+        {{ result }}
+    </div>
+
+    <div class="game-area">
+        <!-- Mão do Dealer -->
+        <div class="hand-section">
+            <div class="hand-title">Dealer</div>
+            <div class="cards">
+                {% for card in dealer_hand %}
+                    <div class="card {% if card.suit in ['♥', '♦'] %}red{% endif %}">
+                        {{ card.value }}{{ card.suit }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="hand-value">Valor: {{ dealer_value }}</div>
+        </div>
+
+        <!-- Mão do Jogador -->
+        <div class="hand-section">
+            <div class="hand-title">Sua Mão</div>
+            <div class="cards">
+                {% for card in player_hand %}
+                    <div class="card {% if card.suit in ['♥', '♦'] %}red{% endif %}">
+                        {{ card.value }}{{ card.suit }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="hand-value">Valor: {{ player_value }}</div>
+        </div>
+    </div>
+
+    <div class="game-actions">
+        <form method="post">
+            <button class="arcade-link arcade-btn" type="submit" name="action" value="new_game">Jogar Novamente</button>
+        </form>
+    </div>
+
+    <a class="arcade-link" href="/games/blackjack">&larr; Voltar ao Menu</a>
+</div>
+{% endblock %}

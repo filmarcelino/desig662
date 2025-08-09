@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>High Scores for {{ game_slug }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title"> High Scores — {{ game_slug.replace('-', ' ').title() }}</h1>
+
+        {% if scores %}
+        <ol class="arcade-list">
+            {% for score in scores %}
+                <li style="margin: 12px 0; font-size: 1.3rem; cursor: default;">
+                    {{ loop.index }}º — {{ score.name }} — {{ score.score }} points
+                </li>
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p>No scores recorded.</p>
+        {% endif %}
+
+        <a href="/" class="arcade-link arcade-btn">Voltar para Home</a>
+    </div>
+</body>
+</html>

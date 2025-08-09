@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Blackjack - Jogando - Faber Games Arcade{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blackjack.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="arcade-container">
+    <h1 class="arcade-title">Blackjack</h1>
+
+    <div class="game-area">
+        <!-- Mão do Dealer -->
+        <div class="hand-section">
+            <div class="hand-title">Dealer</div>
+            <div class="cards">
+                {% for card in dealer_hand %}
+                    <div class="card {% if card.suit in ['♥', '♦'] %}red{% endif %}">
+                        {{ card.value }}{{ card.suit }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="hand-value">Valor: {{ dealer_value }}</div>
+        </div>
+
+        <!-- Mão do Jogador -->
+        <div class="hand-section">
+            <div class="hand-title">Sua Mão</div>
+            <div class="cards">
+                {% for card in player_hand %}
+                    <div class="card {% if card.suit in ['♥', '♦'] %}red{% endif %}">
+                        {{ card.value }}{{ card.suit }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="hand-value">Valor: {{ player_value }}</div>
+        </div>
+    </div>
+
+    {% if game_state == "player_turn" %}
+        <div class="game-actions">
+            <form method="post" style="display: inline;">
+                <button class="action-btn" type="submit" name="action" value="hit">Pedir Carta</button>
+            </form>
+            <form method="post" style="display: inline;">
+                <button class="action-btn" type="submit" name="action" value="stand">Parar</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <a class="arcade-link" href="/games/blackjack">&larr; Voltar ao Menu</a>
+</div>
+{% endblock %}

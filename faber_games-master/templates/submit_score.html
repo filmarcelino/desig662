@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Enviar Sua Pontuação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}">
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">Envie sua pontuação para {{ game_slug }}</h1>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <label for="name">Seu nome:</label><br/>
+            <input class="arcade-input" type="text" id="name" name="name" required />
+            <input type="hidden" name="score" value="{{ score }}" />
+            <br/><br/>
+            <button class="arcade-btn" type="submit">Enviar</button>
+        </form>
+
+        <form method="POST" action="{{ url_for('game_page', game_slug=game_slug) }}" style="margin-top: 20px;">
+            <button class="arcade-btn" type="submit" name="action" value="continue">Jogar Novamente</button>
+        </form>
+
+        <form method="GET" action="{{ url_for('home') }}" style="margin-top: 10px;">
+            <button class="arcade-btn" type="submit">Voltar para a Home</button>
+        </form>
+    </div>
+</body>
+</html>

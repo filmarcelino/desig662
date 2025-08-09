@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Faber Games Arcade - Home{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1 class="page-title">Welcome to the Retro Game Hub</h1>
+    <p class="page-subtitle">Your one-stop place for classic and new arcade games.</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('games_list') }}" class="btn btn-primary">Browse Games</a>
+        <a href="{{ url_for('select_ranking') }}" class="btn btn-secondary">View High Scores</a>
+    </div>
+</div>
+{% endblock %}

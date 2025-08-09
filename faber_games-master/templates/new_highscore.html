@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Parabéns! Novo Recorde!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}" />
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">🎉 Parabéns! Novo Recorde! 🎉</h1>
+
+        <p class="arcade-link">
+            Você fez um streak de <strong>{{ streak }}</strong> vitórias consecutivas!
+        </p>
+
+        <form method="POST" action="{{ url_for('submit_score', game_slug=game_slug) }}">
+            <label for="name">Digite seu nome para salvar no ranking:</label><br />
+            <input type="text" class="arcade-input" id="name" name="name" required autofocus />
+            <input type="hidden" name="score" value="{{ streak }}" />
+            <br /><br />
+            <button class="arcade-btn" type="submit">Salvar Pontuação</button>
+        </form>
+
+        {% if show_continue_options %}
+        <form method="POST" action="{{ url_for('game_page', game_slug='odds-or-evens') }}" style="margin-top: 20px;">
+            <button class="arcade-btn" type="submit" name="action" value="continue">Jogar Novamente</button>
+        </form>
+
+        <form method="GET" action="{{ url_for('home') }}" style="margin-top: 10px;">
+            <button class="arcade-btn" type="submit">Voltar para a Home</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.name }} - Faber Games Arcade{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    {% block styles %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="arcade-container">
+    <h1 class="arcade-title">{{ game.name }}</h1>
+    {% block game_content %}
+    <p>Conteúdo do jogo será exibido aqui.</p>
+    {% endblock %}
+    <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+    <a class="arcade-link" href="/">&larr; Voltar para Home</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {% block extra_scripts %}{% endblock %}
+{% endblock %}

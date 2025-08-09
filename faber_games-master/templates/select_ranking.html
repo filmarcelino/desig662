@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Selecionar Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/arcade.css') }}" />
+</head>
+<body class="arcade-bg">
+    <div class="arcade-container">
+        <h1 class="arcade-title">Rankings</h1>
+
+        {% if games %}
+            <ul class="arcade-list">
+                {% for game in games %}
+                    <li>
+                        <a class="arcade-link" href="{{ url_for('highscores_page', game_slug=game.slug) }}">
+                            Ranking de {{ game.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="color: red;">Nenhum jogo encontrado.</p>
+        {% endif %}
+        <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+    </div>
+</body>
+</html>

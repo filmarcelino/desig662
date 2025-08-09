@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Blackjack - Faber Games Arcade{% endblock %}
+
+{% block content %}
+<div class="arcade-container">
+    <h1 class="arcade-title">Blackjack</h1>
+    <div class="game-description">
+        <p>O objetivo é chegar o mais próximo possível de 21 sem estourar.</p>
+        <p>Cartas de 2-10 valem seu valor numérico.</p>
+        <p>J, Q, K valem 10. Ás vale 1 ou 11.</p>
+        <p>O dealer deve parar em 17 ou mais.</p>
+    </div>
+    <form method="post">
+        <button class="arcade-link arcade-btn" type="submit" name="action" value="new_game">Novo Jogo</button>
+    </form>
+    <a class="arcade-link" href="/games">&larr; Voltar para Games</a>
+</div>
+{% endblock %}
