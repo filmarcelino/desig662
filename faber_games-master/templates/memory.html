@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/memory.css') }}">
 {% endblock %}
 
-{% block content %}
+{% block game_content %}
 <div id="scoreboard">
     <div>Acertos: <span id="matches">0</span></div>
     <div>Tentativas: <span id="attempts">0</span></div>
@@ -28,6 +28,6 @@
 <div id="history"></div>
 {% endblock %}
 
-{% block scripts %}
+{% block extra_scripts %}
 <script src="{{ url_for('static', filename='games/memory.js') }}"></script>
 {% endblock %}
